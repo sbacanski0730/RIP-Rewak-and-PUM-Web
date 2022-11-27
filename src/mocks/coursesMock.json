@@ -1,0 +1,30 @@
+[
+	{
+		"name": "Energetyka 3 - studia niestacjonarne (n3E)",
+		"children": ["n3EŹO (Energetyka)"]
+	},
+	{
+		"name": "Energetyka 4 - studia niestacjonarne (n4E)",
+		"children": ["n3EŹO (Energetyka)"]
+	},
+	{
+		"name": "Energetyka 1 - studia stacjonarne (s1E)",
+		"children": ["s1E (Energetyka)"]
+	},
+	{
+		"name": "Energetyka 2 - studia stacjonarne (s2E)",
+		"children": ["s2E (Energetyka)"]
+	},
+	{
+		"name": "Finanse, rachunkowość i podatki 3 - studia niestacjonarne (n3FRP)",
+		"children": ["n3FRP (Finanse, rachunkowość i podatki)"]
+	},
+	{
+		"name": "Finanse, rachunkowość i podatki 1 - studia stacjonarne (n1FRP)",
+		"children": ["n1FRP (Finanse, rachunkowość i podatki)"]
+	},
+	{
+		"name": "Informatyka 3 - studia stacjonarne (s3INF)",
+		"children": ["s3GK (Informatyka)", "s3PAM (Informatyka)"]
+	}
+]
