@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     min-height: 100vh;
-    height: 100%;
+    height: 100vh;
     width: 100vw;
     background-color: #a317ba;
     background-color: #000;

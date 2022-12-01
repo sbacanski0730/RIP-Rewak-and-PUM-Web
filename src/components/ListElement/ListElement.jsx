@@ -1,35 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { StyledListElement } from './ListElement.style';
 
-const ListElement = ({ content, subText }) => {
-	const [isOpen, setIsOpen] = useState(false);
-
-	const handleOpen = () => {
-		if (subText) {
-			setIsOpen(!isOpen);
-		}
-	};
-
+const ListElement = ({ text, link }) => {
 	return (
 		<>
-			<StyledListElement
-				open={isOpen}
-				onClick={handleOpen}
-				onMouseLeave={() => {
-					setIsOpen(false);
-				}}
-			>
-				<p className='title'>{content}</p>
-				{subText &&
-					subText.map((element, index) => {
-						return (
-							<>
-								<p className='subText' key={index}>
-									{element}
-								</p>
-							</>
-						);
-					})}
+			<StyledListElement>
+				<Link to={`${link}`}>
+					<p className='title'>{text}</p>
+				</Link>
 			</StyledListElement>
 		</>
 	);
