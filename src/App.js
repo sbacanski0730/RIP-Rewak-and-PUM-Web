@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
 import { GlobalStyle } from './globalStyles';
 import CoursesPage from './pages/CoursesPage';
 import HomePage from './pages/HomePage.jsx';
@@ -12,6 +13,7 @@ function App() {
 		<>
 			<GlobalStyle />
 			<BrowserRouter>
+				<Navbar />
 				<Routes>
 					<Route exact path='/' element={<HomePage />} />
 					<Route
