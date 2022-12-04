@@ -4,6 +4,7 @@ import CoursesPage from './pages/CoursesPage';
 import HomePage from './pages/HomePage.jsx';
 import RoomsGroupsPage from './pages/RoomsGroupsPage.jsx';
 import RoomsSearchPage from './pages/RoomsSearchPage';
+import WorkerCalendarPage from './pages/WorkerCalendarPage';
 import WorkerSearchPage from './pages/WorkerSearchPage.jsx';
 import WorkersGroupsPage from './pages/WorkersGroupsPage.jsx';
 
@@ -26,6 +27,11 @@ function App() {
 						element={<WorkerSearchPage />}
 					/>
 					// TODO: create page with worker calendar
+					<Route
+						exact
+						path='/workers/:departmentName/:workerName'
+						element={<WorkerCalendarPage />}
+					/>
 					<Route exact path='/rooms' element={<RoomsGroupsPage />} />
 					<Route exact path='/rooms/:roomName' element={<RoomsSearchPage />} />
 					// TODO: create page with rooms calendar

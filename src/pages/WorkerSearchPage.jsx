@@ -37,7 +37,7 @@ const WorkerSearchPage = () => {
 							return (
 								<SmallListElement
 									text={item.name}
-									link={'/'}
+									link={`/workers/${departmentName}/${item.name}`}
 									key={index}
 								/>
 							);
