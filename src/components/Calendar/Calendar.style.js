@@ -9,6 +9,11 @@ export const StyledCalendar = styled.div`
 
 		height: 100%;
 		width: 100%;
+
+		.fc-timegrid-slot-label-cushion,
+		.fc-timegrid-axis-cushion {
+			color: #fff;
+		}
 	}
 	.fc-header-toolbar {
 		padding: 5px 0;
@@ -63,11 +68,6 @@ export const StyledCalendar = styled.div`
 		.fc-day-today {
 			background-color: rgba(255, 255, 255, 0.05);
 		}
-
-		.fc-timegrid-slot-label-cushion,
-		.fc-timegrid-axis-cushion {
-			color: #fff;
-		}
 	}
 
 	// stylowanie w widoku dnia
@@ -75,11 +75,6 @@ export const StyledCalendar = styled.div`
 		.fc-col-header-cell {
 			color: white;
 			font-weight: 500;
-		}
-
-		.fc-timegrid-slot-label-cushion,
-		.fc-timegrid-axis-cushion {
-			color: #fff;
 		}
 
 		.fc-col-header .fc-day-today {
