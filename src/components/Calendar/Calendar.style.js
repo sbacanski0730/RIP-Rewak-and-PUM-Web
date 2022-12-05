@@ -6,15 +6,25 @@ export const StyledCalendar = styled.div`
 	padding: 10px 10px;
 	.fc {
 		background-color: transparent;
-
 		height: 100%;
 		width: 100%;
-
 		.fc-timegrid-slot-label-cushion,
 		.fc-timegrid-axis-cushion {
 			color: #fff;
 		}
 	}
+
+	.fc-timegrid-now-indicator-arrow {
+		border-color: yellow;
+		border-width: 5px 0 5px 6px;
+		border-bottom-color: transparent;
+		border-top-color: transparent;
+	}
+
+	.fc-timegrid-now-indicator-line {
+		border-color: yellow;
+	}
+
 	.fc-header-toolbar {
 		padding: 5px 0;
 
@@ -22,13 +32,11 @@ export const StyledCalendar = styled.div`
 			.fc-toolbar-title {
 				color: white;
 			}
-
 			.btn {
 				background-color: transparent;
 				border: 1px solid white;
 				color: #fff;
 			}
-
 			.btn:hover {
 				background-color: rgba(255, 255, 255, 0.2);
 			}
@@ -48,7 +56,6 @@ export const StyledCalendar = styled.div`
 				padding: 4px 5px;
 			}
 		}
-
 		.fc-day-today {
 			background-color: rgba(255, 255, 255, 0.2);
 		}
@@ -76,7 +83,6 @@ export const StyledCalendar = styled.div`
 			color: white;
 			font-weight: 500;
 		}
-
 		.fc-col-header .fc-day-today {
 			background-color: rgba(255, 255, 255, 1);
 			color: black;
@@ -89,12 +95,10 @@ export const StyledCalendar = styled.div`
 	.fc-scroller::-webkit-scrollbar {
 		width: 4px;
 	}
-
 	.fc-scroller::-webkit-scrollbar-track {
 		background-color: rgba(0, 0, 0, 0.5);
 		border-radius: 100vw;
 	}
-
 	.fc-scroller::-webkit-scrollbar-thumb {
 		background-color: #fff;
 		border-radius: 100vw;
