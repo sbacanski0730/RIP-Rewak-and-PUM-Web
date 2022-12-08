@@ -14,6 +14,9 @@ export const StyledCalendar = styled.div`
 		.fc-timegrid-axis-cushion {
 			color: #fff;
 		}
+		.tooltip {
+			opacity: 1;
+		}
 	}
 
 	.fc-timegrid-now-indicator-arrow {
@@ -59,36 +62,30 @@ export const StyledCalendar = styled.div`
 		.fc-day-today {
 			background-color: rgba(255, 255, 255, 0.2);
 		}
+
 		.fc-daygrid-day-events {
 			.fc-daygrid-event {
 				background-color: #fff;
 				border-radius: 0;
-				/* border: 1px solid #ccc; */
-				/* margin: 0 1px; */
 				padding: 2px 2px;
-				z-index: 6;
 
 				.fc-daygrid-event-dot {
 					display: none;
 				}
+			}
+			.tooltip {
+				background-color: #000;
+				border: 1px solid white;
+				/* width: 150px; */
 
-				.tooltip {
-					/* background: transparent; */
-					background-color: #000;
-					border: 1px solid white;
-					/* border: none; */
-					width: 150px;
-
-					.tooltip-arrow {
-						display: none;
-					}
-					.tooltip-inner {
-						text-align: center;
-						border-radius: 0;
-						display: inline-block;
-						overflow: hidden;
-						white-space: nowrap;
-					}
+				.tooltip-arrow {
+					display: none;
+				}
+				.tooltip-inner {
+					color: #fff;
+					text-align: center;
+					border-radius: 0;
+					//tekst wewnatrz tooltip'a
 				}
 			}
 		}
@@ -141,43 +138,58 @@ export const StyledCalendar = styled.div`
 		.fc-col-header-cell {
 			color: white;
 			font-weight: 500;
+			/* border-bottom: 1px solid #000; */
 		}
+
 		.fc-col-header .fc-day-today {
-			background-color: rgba(255, 255, 255, 1);
+			/* background-color: rgba(255, 255, 255, 1); */
+			border-bottom: 1px solid black;
 			color: black;
+			.fc-scrollgrid-sync-inner {
+				background-color: rgba(255, 255, 255, 1);
+				/* border-bottom: 1px solid #000; */
+			}
 		}
 		.fc-day-today {
 			background-color: rgba(255, 255, 255, 0.05);
 		}
-		.fc-timegrid-event {
-			background-color: rgba(255, 255, 255, 1);
-			box-shadow: none;
-			border: none;
-			border-radius: 0;
-			.fc-event-main {
-				padding: 2px;
-				/* border: 1px solid green; */
+		.fc-timegrid-event-harness {
+			.fc-timegrid-event {
+				background-color: rgba(255, 255, 255, 1);
+				box-shadow: none;
+				border: none;
+				border-radius: 0;
+				.fc-event-main {
+					padding: 2px;
+					/* border: 1px solid green; */
 
-				.fc-event-main-frame {
-					/* border: 1px dotted green; */
-					padding: 0 2px;
-					/* border: none; */
-					color: #000;
-					.fc-event-time {
-						/* border: 1px dotted blue; */
-						font-size: 15px;
-
-						/* border: none; */
-					}
-					.fc-event-title-container {
-						/* border: 1px dashed pink; */
-						.fc-event-title {
-							/* border: 1px dashed purple; */
+					.fc-event-main-frame {
+						padding: 0 2px;
+						color: #000;
+						.fc-event-time {
 							color: #000;
-							font-weight: 600;
+							font-size: 14px;
+							font-weight: 400;
 							text-align: center;
 						}
+						.fc-event-title-container {
+							.fc-event-title {
+								color: #000;
+								font-weight: 600;
+								text-align: center;
+							}
+						}
 					}
+				}
+			}
+			.tooltip {
+				/* opacity: 1; */
+				.tooltip-arrow {
+					display: none;
+				}
+				.tooltip-inner {
+					background-color: #000;
+					border-radius: 0;
 				}
 			}
 		}
@@ -195,6 +207,47 @@ export const StyledCalendar = styled.div`
 		}
 		.fc-day-today {
 			background-color: rgba(255, 255, 255, 0.05);
+		}
+		.fc-timegrid-col-frame {
+			/* background-color: rgba(249, 248, 113, 0.5); */
+
+			.fc-timegrid-event-harness {
+				/* background-color: rgba(249, 248, 113, 0.5); */
+				.fc-timegrid-event {
+					margin-left: 20px;
+					width: 50%;
+					background-color: rgba(255, 255, 255, 1);
+					box-shadow: none;
+					border: none;
+					border-radius: 0;
+					.fc-event-main {
+						padding: 2px;
+						/* border: 1px solid green; */
+
+						.fc-event-main-frame {
+							padding: 0 2px;
+							color: #000;
+							display: flex;
+							flex-direction: row;
+							gap: 20px;
+							.fc-event-time {
+								color: #000;
+								font-weight: 400;
+								font-size: 17px;
+							}
+							.fc-event-title-container {
+								.fc-event-title {
+									color: #000;
+									font-weight: 600;
+									font-size: 17px;
+								}
+							}
+						}
+					}
+				}
+				.tooltip {
+				}
+			}
 		}
 	}
 

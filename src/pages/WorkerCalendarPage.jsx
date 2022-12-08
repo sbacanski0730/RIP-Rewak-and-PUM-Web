@@ -5,7 +5,6 @@ import Calendar from '../components/Calendar/Calendar';
 const WorkerCalendarPage = () => {
 	const [calendarData, setCalendarData] = useState([]);
 	const { departmentName, workerName } = useParams();
-	// console.log('departmentName:', departmentName);
 	console.log('workerName:', workerName);
 
 	useEffect(() => {
@@ -20,13 +19,13 @@ const WorkerCalendarPage = () => {
 
 		const calendarData = data.map(element => {
 			return {
-				title: `${element.subject} ${element.room}`,
+				title: `${element.subjectShort} ${element.room}`,
 				start: `${element.date}T${element.timeStart}`,
 				end: `${element.date}T${element.timeEnd}`,
 				className: `${element.type}`,
 				allDay: false,
 				extendedProps: {
-					description: `${element.subject} ${element.room}`,
+					description: `${element.subjectLong} ${element.room}`,
 				},
 			};
 		});

@@ -11,13 +11,18 @@ import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 
 import { Tooltip } from 'bootstrap';
 
+import {
+	showTooltipMonthView,
+	showTooltipWeekView,
+	showTooltipDayView,
+	hideTooltip,
+} from '../../utils/tooltipFunctions';
+
 const Calendar = ({ events }) => {
 	let tooltipInstance = null;
 
 	const clickTooltip = info => {
 		const condition = info.el.parentElement.parentElement.classList[0].toString();
-
-		// console.log(condition.includes('popover'));
 
 		if (!condition.includes('popover')) {
 			if (info.event.extendedProps.description) {
@@ -26,7 +31,7 @@ const Calendar = ({ events }) => {
 					html: true,
 					placement: 'top',
 					trigger: 'hover',
-					container: info.el,
+					container: info.el.parentElement,
 				});
 				tooltipInstance.show();
 			}
@@ -36,30 +41,26 @@ const Calendar = ({ events }) => {
 	const showTooltip = info => {
 		const condition = info.el.parentElement.parentElement.classList[0].toString();
 
-		// console.log(condition.includes('popover'));
-
-		if (!condition.includes('popover')) {
-			if (info.event.extendedProps.description) {
-				tooltipInstance = new Tooltip(info.el, {
-					title: info.event.extendedProps.description,
-					html: true,
-					placement: 'top',
-					trigger: 'hover',
-					container: info.el,
-				});
-				tooltipInstance.show();
-			}
+		// if (!condition.includes('popover')) {
+		if (info.event.extendedProps.description) {
+			tooltipInstance = new Tooltip(info.el, {
+				title: info.event.extendedProps.description,
+				html: true,
+				placement: 'top',
+				trigger: 'hover',
+				container: info.el.parentElement,
+			});
+			tooltipInstance.show();
 		}
+		// }
 	};
 
-	const hideTooltip = () => {
-		if (tooltipInstance) {
-			tooltipInstance.dispose();
-			tooltipInstance = null;
-		}
-	};
-
-	let isPopoverOpen = false;
+	// const hideTooltip = () => {
+	// 	if (tooltipInstance) {
+	// 		tooltipInstance.dispose();
+	// 		tooltipInstance = null;
+	// 	}
+	// };
 
 	return (
 		<StyledCalendar>
@@ -89,10 +90,72 @@ const Calendar = ({ events }) => {
 							hour12: false,
 							meridiem: false,
 						},
-						// eventMouseEnter: showTooltip,
-						// eventMouseLeave: hideTooltip,
-						eventClick: clickTooltip,
-						// moreLinkClassNames: 'popover-event',
+						eventMouseEnter: showTooltipMonthView,
+						eventMouseLeave: hideTooltip,
+						// eventClick: showTooltipMonthView,
+					},
+					timeGridWeek: {
+						titleFormat: {
+							month: 'short',
+							year: 'numeric',
+							day: 'numeric',
+						},
+						dayHeaderFormat: {
+							weekday: 'short',
+							day: 'numeric',
+							month: 'short',
+						},
+						slotMinTime: '07:30:00',
+						slotMaxTime: '21:00:00',
+						slotDuration: '00:15:00',
+						slotLabelFormat: {
+							hour: '2-digit',
+							minute: '2-digit',
+							omitZeroMinute: false,
+							meridiem: false,
+							hour12: false,
+						},
+						eventTimeFormat: {
+							hour: '2-digit',
+							minute: '2-digit',
+							hour12: false,
+							meridiem: false,
+						},
+						eventMouseEnter: showTooltipWeekView,
+						eventMouseLeave: hideTooltip,
+						// eventClick: showTooltipWeekView,
+					},
+					timeGridDay: {
+						titleFormat: {
+							month: 'long',
+							year: 'numeric',
+							day: 'numeric',
+						},
+						dayHeaderFormat: {
+							weekday: 'long',
+							day: 'numeric',
+							month: 'long',
+						},
+						slotMinTime: '07:30:00',
+						slotMaxTime: '21:00:00',
+						slotDuration: '00:15:00',
+
+						slotLabelFormat: {
+							hour: '2-digit',
+							minute: '2-digit',
+							omitZeroMinute: false,
+							meridiem: false,
+							hour12: false,
+						},
+						eventTimeFormat: {
+							hour: '2-digit',
+							minute: '2-digit',
+							hour12: false,
+							meridiem: false,
+						},
+						eventMouseEnter: showTooltipDayView,
+						eventMouseLeave: hideTooltip,
+						// eventClick: showTooltipDayView,
 					},
 				}}
 				businessHours={{
