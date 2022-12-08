@@ -9,8 +9,57 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 
+import { Tooltip } from 'bootstrap';
+
 const Calendar = ({ events }) => {
-	// console.log('events: ', events);
+	let tooltipInstance = null;
+
+	const clickTooltip = info => {
+		const condition = info.el.parentElement.parentElement.classList[0].toString();
+
+		// console.log(condition.includes('popover'));
+
+		if (!condition.includes('popover')) {
+			if (info.event.extendedProps.description) {
+				tooltipInstance = new Tooltip(info.el, {
+					title: info.event.extendedProps.description,
+					html: true,
+					placement: 'top',
+					trigger: 'hover',
+					container: info.el,
+				});
+				tooltipInstance.show();
+			}
+		}
+	};
+
+	const showTooltip = info => {
+		const condition = info.el.parentElement.parentElement.classList[0].toString();
+
+		// console.log(condition.includes('popover'));
+
+		if (!condition.includes('popover')) {
+			if (info.event.extendedProps.description) {
+				tooltipInstance = new Tooltip(info.el, {
+					title: info.event.extendedProps.description,
+					html: true,
+					placement: 'top',
+					trigger: 'hover',
+					container: info.el,
+				});
+				tooltipInstance.show();
+			}
+		}
+	};
+
+	const hideTooltip = () => {
+		if (tooltipInstance) {
+			tooltipInstance.dispose();
+			tooltipInstance = null;
+		}
+	};
+
+	let isPopoverOpen = false;
 
 	return (
 		<StyledCalendar>
@@ -29,9 +78,21 @@ const Calendar = ({ events }) => {
 					center: 'title',
 					right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next',
 				}}
+				dayMaxEventRows={true}
 				views={{
 					dayGridMonth: {
 						titleFormat: { month: 'long', year: 'numeric' },
+						// dayMaxEventRows: 1,
+						eventTimeFormat: {
+							hour: '2-digit',
+							minute: '2-digit',
+							hour12: false,
+							meridiem: false,
+						},
+						// eventMouseEnter: showTooltip,
+						// eventMouseLeave: hideTooltip,
+						eventClick: clickTooltip,
+						// moreLinkClassNames: 'popover-event',
 					},
 				}}
 				businessHours={{

@@ -25,6 +25,9 @@ const WorkerCalendarPage = () => {
 				end: `${element.date}T${element.timeEnd}`,
 				className: `${element.type}`,
 				allDay: false,
+				extendedProps: {
+					description: `${element.subject} ${element.room}`,
+				},
 			};
 		});
 		setCalendarData(calendarData);
