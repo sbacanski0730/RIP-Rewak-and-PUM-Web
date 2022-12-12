@@ -12,8 +12,9 @@ const StyledWorkerSearchPage = styled.div`
 `;
 
 const WorkerSearchPage = () => {
-	const [workersList, setWorkersList] = useState();
 	const { departmentName } = useParams();
+	const [workersList, setWorkersList] = useState();
+	const [filteredList, setFilteredList] = useState();
 
 	useEffect(() => {
 		fetchWorkers();
@@ -25,19 +26,33 @@ const WorkerSearchPage = () => {
 		);
 		const data = await response.json();
 		setWorkersList(data);
+		setFilteredList(data);
+	};
+
+	const filterList = e => {
+		if (workersList) {
+			let chars = e.target.value;
+			setFilteredList(
+				workersList.filter(e =>
+					e.name.toLowerCase().includes(chars.toLowerCase())
+				)
+			);
+		} else {
+			console.log('nie ma');
+		}
 	};
 
 	return (
 		<>
 			<StyledWorkerSearchPage>
-				<Input placeholder={'Szukaj po nazwisku'} />
+				<Input placeholder={'Szukaj po nazwisku'} filterList={filterList} />
 				<SmallList>
 					{workersList &&
-						workersList.map((item, index) => {
+						filteredList.map((item, index) => {
 							return (
 								<SmallListElement
 									text={item.name}
-									link={'/'}
+									link={`/workers/${departmentName}/${item.name}`}
 									key={index}
 								/>
 							);

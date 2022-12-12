@@ -40,5 +40,6 @@ export const StyledListElement = styled.div`
 		color: #fff;
 		font-size: 1.2rem;
 		font-weight: 500;
+		margin: 0;
 	}
 `;

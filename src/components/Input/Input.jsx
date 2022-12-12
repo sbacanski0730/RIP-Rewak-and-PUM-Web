@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyledInput } from './Input.style';
 
-const Input = ({ placeholder }) => {
-	const [inputValue, setInputValue] = useState();
+const Input = ({ placeholder, filterList }) => {
 	return (
 		<>
 			<StyledInput>
-				<input type='text' placeholder={placeholder} value={inputValue} />
+				<input type='text' placeholder={placeholder} onChange={filterList} />
 			</StyledInput>
 		</>
 	);
