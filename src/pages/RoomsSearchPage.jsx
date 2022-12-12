@@ -11,8 +11,9 @@ const StyledRoomsSearchPage = styled.div`
 `;
 
 const RoomsSearchPage = () => {
-	const [rooms, setRooms] = useState([]);
 	const { roomName } = useParams();
+	const [rooms, setRooms] = useState([]);
+	const [filteredRooms, setFilteredRooms] = useState([]);
 
 	useEffect(() => {
 		fetchRooms();
@@ -24,15 +25,27 @@ const RoomsSearchPage = () => {
 		);
 		const data = await response.json();
 		setRooms(data);
+		setFilteredRooms(data);
+	};
+
+	const filterList = e => {
+		if (rooms) {
+			let chars = e.target.value;
+			setFilteredRooms(
+				rooms.filter(e => e.name.toLowerCase().includes(chars.toLowerCase()))
+			);
+		} else {
+			console.log('nie ma');
+		}
 	};
 
 	return (
 		<>
 			<StyledRoomsSearchPage>
-				<Input placeholder='Szukaj po sali' />
+				<Input placeholder='Szukaj po sali' filterList={filterList} />
 				<SmallList>
 					{rooms &&
-						rooms.map((item, index) => {
+						filteredRooms.map((item, index) => {
 							return (
 								<SmallListElement
 									text={item.name}
