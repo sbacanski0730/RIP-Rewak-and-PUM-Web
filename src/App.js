@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import { GlobalStyle } from './globalStyles';
 import CoursesPage from './pages/CoursesPage';
 import HomePage from './pages/HomePage.jsx';
+import RoomsCalendarPage from './pages/RoomsCalendarPage';
 import RoomsGroupsPage from './pages/RoomsGroupsPage.jsx';
 import RoomsSearchPage from './pages/RoomsSearchPage';
 import WorkerCalendarPage from './pages/WorkerCalendarPage';
@@ -35,7 +36,16 @@ function App() {
 						element={<WorkerCalendarPage />}
 					/>
 					<Route exact path='/rooms' element={<RoomsGroupsPage />} />
-					<Route exact path='/rooms/:roomName' element={<RoomsSearchPage />} />
+					<Route
+						exact
+						path='/rooms/:buildingName'
+						element={<RoomsSearchPage />}
+					/>
+					<Route
+						exact
+						path='/rooms/:buildingName/:roomNumber'
+						element={<RoomsCalendarPage />}
+					/>
 					// TODO: create page with rooms calendar
 				</Routes>
 			</BrowserRouter>

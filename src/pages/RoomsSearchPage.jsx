@@ -11,7 +11,7 @@ const StyledRoomsSearchPage = styled.div`
 `;
 
 const RoomsSearchPage = () => {
-	const { roomName } = useParams();
+	const { buildingName } = useParams();
 	const [rooms, setRooms] = useState([]);
 	const [filteredRooms, setFilteredRooms] = useState([]);
 
@@ -21,7 +21,7 @@ const RoomsSearchPage = () => {
 
 	const fetchRooms = async () => {
 		const response = await fetch(
-			`http://localhost:9000/rip-mock-api/rooms/${roomName}`
+			`http://localhost:9000/rip-mock-api/rooms/${buildingName}`
 		);
 		const data = await response.json();
 		setRooms(data);
@@ -49,7 +49,7 @@ const RoomsSearchPage = () => {
 							return (
 								<SmallListElement
 									text={item.name}
-									link={'/'}
+									link={`/rooms/${buildingName}/${item.name}`}
 									key={index}
 								/>
 							);

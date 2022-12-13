@@ -18,8 +18,11 @@ const HomePage = () => {
 					text={'Wydział Nauk Społecznych i Humanistycznych'}
 					link={'/courses/Wydział Nauk Społecznych i Humanistycznych'}
 				/>
-				<ListElement text={'Wychowanie Fizyczne'} link={'/'} />
-				<ListElement text={'Erazmus'} link={'/'} />
+				<ListElement
+					text={'Wychowanie Fizyczne'}
+					link={'/courses/Wychowanie Fizyczne'}
+				/>
+				<ListElement text={'Erazmus'} link={'/courses/Erazmus'} />
 				<ListElement text={'Szukaj pracownika'} link={'/workers'} />
 				<ListElement text={'Szukaj sali'} link={'/rooms'} />
 			</List>
