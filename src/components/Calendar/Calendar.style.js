@@ -213,9 +213,10 @@ export const StyledCalendar = styled.div`
 
 			.fc-timegrid-event-harness {
 				/* background-color: rgba(249, 248, 113, 0.5); */
+				border: 1px solid white;
+				/* width: 50%; */
 				.fc-timegrid-event {
 					margin-left: 20px;
-					width: 50%;
 					background-color: rgba(255, 255, 255, 1);
 					box-shadow: none;
 					border: none;

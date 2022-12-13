@@ -115,8 +115,13 @@ const Calendar = ({ events }) => {
 							meridiem: false,
 							hour12: false,
 						},
-						slotEventOverlap: false,
-						eventMaxStack: 0,
+						slotEventOverlap: true,
+						eventMaxStack: 1,
+						dayPopoverFormat: {
+							month: 'numeric',
+							day: 'numeric',
+							year: 'numeric',
+						},
 						eventTimeFormat: {
 							hour: '2-digit',
 							minute: '2-digit',
@@ -141,7 +146,13 @@ const Calendar = ({ events }) => {
 						slotMinTime: '07:30:00',
 						slotMaxTime: '21:00:00',
 						slotDuration: '00:15:00',
-
+						slotEventOverlap: true,
+						eventMaxStack: 1,
+						dayPopoverFormat: {
+							month: 'numeric',
+							day: 'numeric',
+							year: 'numeric',
+						},
 						slotLabelFormat: {
 							hour: '2-digit',
 							minute: '2-digit',
