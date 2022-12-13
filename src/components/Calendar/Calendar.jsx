@@ -39,9 +39,6 @@ const Calendar = ({ events }) => {
 	};
 
 	const showTooltip = info => {
-		const condition = info.el.parentElement.parentElement.classList[0].toString();
-
-		// if (!condition.includes('popover')) {
 		if (info.event.extendedProps.description) {
 			tooltipInstance = new Tooltip(info.el, {
 				title: info.event.extendedProps.description,
@@ -52,15 +49,7 @@ const Calendar = ({ events }) => {
 			});
 			tooltipInstance.show();
 		}
-		// }
 	};
-
-	// const hideTooltip = () => {
-	// 	if (tooltipInstance) {
-	// 		tooltipInstance.dispose();
-	// 		tooltipInstance = null;
-	// 	}
-	// };
 
 	return (
 		<StyledCalendar>
