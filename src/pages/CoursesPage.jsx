@@ -33,8 +33,8 @@ const StyledCoursesPage = styled.div`
 
 const CoursesPage = () => {
 	const [coursesList, setCoursesList] = useState([]);
-	const { departmentsName } = useParams();
-	console.log('departmentsName: ', departmentsName);
+	const { departmentName } = useParams();
+	console.log('departmentsName: ', departmentName);
 
 	useEffect(() => {
 		fetchCourses();
@@ -42,7 +42,7 @@ const CoursesPage = () => {
 
 	const fetchCourses = async () => {
 		const resources = await fetch(
-			`http://localhost:9000/rip-mock-api/courses/${departmentsName}`
+			`http://localhost:9000/rip-mock-api/courses/${departmentName}`
 		);
 		const data = await resources.json();
 		setCoursesList(data);
@@ -59,6 +59,7 @@ const CoursesPage = () => {
 									name={item.name}
 									children={item.children}
 									key={index}
+									departmentName={departmentName}
 								/>
 							);
 						})}

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import { GlobalStyle } from './globalStyles';
+import CoursesCalendarPage from './pages/CoursesCalendarPage';
 import CoursesPage from './pages/CoursesPage';
 import HomePage from './pages/HomePage.jsx';
 import RoomsCalendarPage from './pages/RoomsCalendarPage';
@@ -20,8 +21,13 @@ function App() {
 					<Route exact path='/' element={<HomePage />} />
 					<Route
 						exact
-						path='/courses/:departmentsName'
+						path='/courses/:departmentName'
 						element={<CoursesPage />}
+					/>
+					<Route
+						exact
+						path='/courses/:departmentName/:courseName'
+						element={<CoursesCalendarPage />}
 					/>
 					<Route exact path='/workers' element={<WorkersGroupsPage />} />
 					<Route
