@@ -115,6 +115,8 @@ const Calendar = ({ events }) => {
 							meridiem: false,
 							hour12: false,
 						},
+						slotEventOverlap: false,
+						eventMaxStack: 0,
 						eventTimeFormat: {
 							hour: '2-digit',
 							minute: '2-digit',
