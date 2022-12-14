@@ -44,7 +44,7 @@
 
 -   **Lista wszystkich pracowników będących przypisanych do danej grupy**
 
-    **Endpoint zwraca listę pracowników przypisanych do grupy przekazanej w parametrze endpointa (:departmentsName)**
+    **Endpoint zwraca listę pracowników przypisanych do grupy przekazanej w parametrze endpointa (_:departmentsName_)**
 
     Endpoint:
 
@@ -71,13 +71,13 @@
     	{
     		"name": "Bezdziecka Agnieszka"
     	},
-    	{[...]}s
+    	{[...]}
     ]
     ```
 
 -   **Lista godzin dydaktycznych pracownika**
 
-    **Endpoint z podanych w ścieżce danych wyciaga informacje o wydziale w którym znajduje sie pracownik oraz jego imię i nazwisko i na tej podstawie tych informacji zwraca listę godzin pracownika z ich danymi (jak we wzorze respons'a)**
+    **Endpoint z podanych w ścieżce danych (_departmentName_, _workerName_) wyciaga informacje o wydziale, w którym znajduje sie pracownik oraz jego imię i nazwisko i na tej podstawie tych informacji zwraca listę godzin pracownika z ich danymi (jak we wzorze respons'a)**
 
     Endpoint:
 
@@ -151,7 +151,7 @@
 
 -   **Lista wszystkich sal z danego budynku**
 
-    **Endpoint zwraca listę sal jakie znajduja sie w budynku, ktorego nazwe otrzymuje w parametrach**
+    **Endpoint znając ze parametru _:buildingName_ zwraca listę sal jakie znajduja sie w budynku, ktorego nazwe otrzymuje w parametrach**
 
     Endpoint:
 
@@ -196,7 +196,7 @@
 
 -   **Lista godzin w których odbywaja sie zajecia w danej sali**
 
-    **Endpoint znając dane ze ścieżki (nazwę budynku oraz numer sali) zwraca listę zajęć jakie odbywają się w danej sali**
+    **Endpoint znając dane ze ścieżki nazwę budynku _(:buildingName)_ oraz numer sali _(:roomName)_ zwraca listę zajęć jakie odbywają się w danej sali**
 
     Endpoint:
 
@@ -223,5 +223,108 @@
     		"subject": "Bezpieczeństwo wewnętrzne 1"
     	},
     	{[...]}
+    ]
+    ```
+
+-   **Lista kierunków i ich specjalizacji**
+
+    **Endpoint po nazwie kierunku _(.../:departmentName)_ zwraca listę kierunków danego wydziału wraz z listą wszsystkich ich specjalizacji.**
+
+    Endpoint:
+
+    ```
+    	localhost:9000/courses/:departmentName
+    ```
+
+    Wzór response:
+
+    _Zwróćcie uwagę, że nawet jak kierunek ma tylko jedną specjalizację to i tak zwraca tablicę, ale o długości jeden_
+
+    ```json
+    [
+    	{
+    		"name": "Dietetyka 1- studia stacjonarne (s1D)",
+    		"children": [
+    			{
+    				"name": "s1D (Dietetyka)"
+    			},
+    			{
+    				"name": "s1D (Dietetyka)"
+    			}
+    		]
+    	},
+    	{
+    		"name": "Dietetyka 2- studia stacjonarne (s2D)",
+    		"children": [
+    			{
+    				"name": "s2D (Dietetyka)"
+    			},
+    			{
+    				"name": "s2D (Dietetyka)"
+    			}
+    		]
+    	},
+    	{
+    		"name": "Dietetyka 3- studia stacjonarne (s3D)",
+    		"children": [
+    			{
+    				"name": "s3DK (Dietetyka)"
+    			}
+    		]
+    	}
+    ]
+    ```
+
+-   **Lista wszystkich zajeć jakie wystepują na danej specjalizacji**
+
+    **Endpoint przyjmując dwa parametry: _departmentName_ i _courseName_ znajduje listę jego kierunków ze specjalizacjami i zwraca listę zajęć (eventów)**
+
+    **Nie trzeba zwracać uwagi, czy zajęcia (eventy) się powtarzają (np. dwie różne grupy na tą samą godzinę) ale nie może być kilku identycznych (o identycznych wartościach)**
+
+    Endpoint:
+
+    ```
+    	localhost:9000/courses/:departmentName/:courseName
+    ```
+
+    Wzór reponse:
+
+    UWAGA! Do stworzenia nie potrzebuję endpointów w jakiejś konkretnej kolejności. Wystarczy, że będą według wzoru.
+
+    ```json
+    [
+    	{
+    		"date": "2022-12-13",
+    		"timeStart": "10:00",
+    		"timeEnd": "11:30",
+    		"groupName": "s1LIT1(1)u",
+    		"subjectShort": "Ti",
+    		"subjectLong": "Technologie informacyjne",
+    		"professor": "mgr inż. Józefa Górska-Zając",
+    		"room": "A213",
+    		"type": "lab"
+    	},
+    	{
+    		"date": "2022-12-14",
+    		"timeStart": "17:00",
+    		"timeEnd": "18:30",
+    		"groupName": "s1LIT1(3)u",
+    		"subjectShort": "Matem",
+    		"subjectLong": "Matematyka",
+    		"professor": "dr Marek Gorzelańczyk",
+    		"room": "Online_103",
+    		"type": "wyk"
+    	},
+    	{
+    		"date": "2022-12-17",
+    		"timeStart": "08:15",
+    		"timeEnd": "09:45",
+    		"groupName": "s1LIT2(1)u",
+    		"subjectShort": "Rachu",
+    		"subjectLong": "Rachunkowość",
+    		"professor": "mgr Agnieszka Koryś",
+    		"room": "C224",
+    		"type": "ćw"
+    	}
     ]
     ```
