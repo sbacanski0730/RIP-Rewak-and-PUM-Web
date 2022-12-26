@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+let wykColor = 'rgba(127, 0, 255, 1)';
+let labColor = 'rgba(153, 153, 0, 1)';
+let cwColor = 'rgba(255, 0, 127, 1)';
+let semColor = 'rgba(255, 153, 51, 1)';
+
 export const StyledCalendar = styled.div`
 	width: 800px;
 	height: 800px;
@@ -68,11 +73,32 @@ export const StyledCalendar = styled.div`
 				background-color: #fff;
 				border-radius: 0;
 				padding: 2px 2px;
-
 				.fc-daygrid-event-dot {
 					display: none;
 				}
+
+				&.wyk {
+					/* background-color: rgba(127, 0, 255, 1); */
+					background-color: ${wykColor};
+				}
+				&.lab {
+					/* background-color: rgba(255, 51, 51, 1); */
+					background-color: ${labColor};
+				}
+				&.cw {
+					/* background-color: rgba(255, 100, 51, 1); */
+					background-color: ${cwColor};
+				}
+				&.ćw {
+					/* background-color: rgba(255, 100, 51, 1); */
+					background-color: ${cwColor};
+				}
+				&.sem {
+					/* background-color: rgba(255, 153, 51, 1); */
+					background-color: ${semColor};
+				}
 			}
+
 			.tooltip {
 				background-color: #000;
 				border: 1px solid white;
@@ -85,7 +111,6 @@ export const StyledCalendar = styled.div`
 					color: #fff;
 					text-align: center;
 					border-radius: 0;
-					//tekst wewnatrz tooltip'a
 				}
 			}
 		}
@@ -117,7 +142,7 @@ export const StyledCalendar = styled.div`
 		.fc-popover-body {
 			.fc-daygrid-event {
 				color: #fff;
-				border: 1px solid #fff;
+				/* border: 1px solid #fff; */
 				border-radius: 0;
 				padding: 4px 10px;
 				font-size: 17px;
@@ -127,6 +152,44 @@ export const StyledCalendar = styled.div`
 
 				.fc-daygrid-event-dot {
 					display: none;
+				}
+
+				&.wyk {
+					background-color: ${wykColor};
+				}
+				&.lab {
+					background-color: ${labColor};
+				}
+				&.cw {
+					background-color: ${cwColor};
+				}
+				&.ćw {
+					background-color: ${cwColor};
+				}
+				&.sem {
+					background-color: ${semColor};
+				}
+			}
+			.fc-timegrid-event {
+				border-radius: none;
+				&.wyk {
+					background-color: ${wykColor};
+				}
+				&.lab {
+					background-color: ${labColor};
+				}
+				&.cw {
+					background-color: ${cwColor};
+				}
+				&.ćw {
+					background-color: ${cwColor};
+				}
+				&.sem {
+					background-color: ${semColor};
+				}
+				.fc-event-main-frame {
+					font-size: 15px;
+					padding-left: 5px;
 				}
 			}
 		}
@@ -159,6 +222,23 @@ export const StyledCalendar = styled.div`
 				box-shadow: none;
 				border: none;
 				border-radius: 0;
+
+				&.wyk {
+					background-color: ${wykColor};
+				}
+				&.lab {
+					background-color: ${labColor};
+				}
+				&.cw {
+					background-color: ${cwColor};
+				}
+				&.ćw {
+					background-color: ${cwColor};
+				}
+				&.sem {
+					background-color: ${semColor};
+				}
+
 				.fc-event-main {
 					padding: 2px;
 					/* border: 1px solid green; */
@@ -223,7 +303,6 @@ export const StyledCalendar = styled.div`
 					border-radius: 0;
 					.fc-event-main {
 						padding: 2px;
-						/* border: 1px solid green; */
 
 						.fc-event-main-frame {
 							padding: 0 2px;
@@ -245,8 +324,21 @@ export const StyledCalendar = styled.div`
 							}
 						}
 					}
-				}
-				.tooltip {
+					&.wyk {
+						background-color: ${wykColor};
+					}
+					&.lab {
+						background-color: ${labColor};
+					}
+					&.cw {
+						background-color: ${cwColor};
+					}
+					&.ćw {
+						background-color: ${cwColor};
+					}
+					&.sem {
+						background-color: ${semColor};
+					}
 				}
 			}
 		}
