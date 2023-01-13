@@ -20,9 +20,7 @@ const RoomsSearchPage = () => {
 	}, []);
 
 	const fetchRooms = async () => {
-		const response = await fetch(
-			`http://localhost:9000/rip-mock-api/rooms/${buildingName}`
-		);
+		const response = await fetch(`https://s1.celber.pl/rooms/${buildingName}`);
 		const data = await response.json();
 		setRooms(data);
 		setFilteredRooms(data);

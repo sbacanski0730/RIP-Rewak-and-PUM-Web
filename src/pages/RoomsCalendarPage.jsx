@@ -3,11 +3,8 @@ import { useParams } from 'react-router-dom';
 import Calendar from '../components/Calendar/Calendar';
 
 const RoomsCalendarPage = () => {
-	console.log('roomsCalendarPage');
 	const { buildingName, roomNumber } = useParams();
 	const [roomEvents, setRoomEvents] = useState([]);
-	console.log('buildingName: ', buildingName);
-	console.log('roomNumber: ', roomNumber);
 
 	useEffect(() => {
 		fetchRoomCalendar();
@@ -15,18 +12,18 @@ const RoomsCalendarPage = () => {
 
 	const fetchRoomCalendar = async () => {
 		const response = await fetch(
-			`http://localhost:9000/rip-mock-api/rooms/${buildingName}/${roomNumber}`
+			`https://s1.celber.pl/rooms/${buildingName}/${roomNumber}`
 		);
 		const data = await response.json();
 
 		const calendarData = data.map(element => {
 			return {
-				title: `${element.subject} ${element.professor}`,
-				start: `${element.date}T${element.timeStart}`,
-				end: `${element.date}T${element.timeEnd}`,
+				title: `${element.subject} ${element.profesor}`,
+				start: `${element.timeStart.date.replace(' ', 'T')}`,
+				end: `${element.timeEnd.date.replace(' ', 'T')}`,
 				allDay: false,
 				extendedProps: {
-					description: `${element.subject} ${element.professor}`,
+					description: `${element.subject} ${element.profesor}`,
 				},
 			};
 		});

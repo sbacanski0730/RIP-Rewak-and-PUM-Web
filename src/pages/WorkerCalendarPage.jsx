@@ -5,7 +5,6 @@ import Calendar from '../components/Calendar/Calendar';
 const WorkerCalendarPage = () => {
 	const [calendarData, setCalendarData] = useState([]);
 	const { departmentName, workerName } = useParams();
-	console.log('workerName:', workerName);
 
 	useEffect(() => {
 		fetchCalendarData();
@@ -13,26 +12,25 @@ const WorkerCalendarPage = () => {
 
 	const fetchCalendarData = async () => {
 		const response = await fetch(
-			`http://localhost:9000/rip-mock-api/workers/${departmentName}/${workerName}`
+			`https://s1.celber.pl/workers-group/${departmentName}/${workerName}`
 		);
 		const data = await response.json();
 
 		const calendarData = data.map(element => {
+			let regex = /\((.*?)\)/;
 			return {
-				title: `${element.subjectShort} ${element.room}`,
-				start: `${element.date}T${element.timeStart}`,
-				end: `${element.date}T${element.timeEnd}`,
-				className: `${element.type}`,
+				title: `${element.subject} ${element.room}`,
+				start: `${element.timeStart.date.replace(' ', 'T')}`,
+				end: `${element.timeEnd.date.replace(' ', 'T')}`,
+				className: `${regex.exec(element.subject)[1]}`,
 				allDay: false,
 				extendedProps: {
-					description: `${element.subjectLong} ${element.room}`,
+					description: `${element.subject}(full) ${element.room}`,
 				},
 			};
 		});
 		setCalendarData(calendarData);
 	};
-
-	console.log('calendarData: ', calendarData);
 
 	return (
 		<div>

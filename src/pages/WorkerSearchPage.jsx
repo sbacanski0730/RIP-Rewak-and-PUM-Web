@@ -22,7 +22,7 @@ const WorkerSearchPage = () => {
 
 	const fetchWorkers = async () => {
 		const response = await fetch(
-			`http://localhost:9000/rip-mock-api/workers-group/${departmentName}`
+			`https://s1.celber.pl/workers-group/${departmentName}`
 		);
 		const data = await response.json();
 		setWorkersList(data);
@@ -38,7 +38,7 @@ const WorkerSearchPage = () => {
 				)
 			);
 		} else {
-			console.log('nie ma');
+			console.log('No matches');
 		}
 	};
 
