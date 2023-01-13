@@ -6,34 +6,30 @@ const CoursesCalendarPage = () => {
 	const { departmentName, courseName } = useParams();
 	const [courseEvents, setCourseEvents] = useState([]);
 
-	console.log('departmentName: ', departmentName);
-	console.log('courseName: ', courseName);
-
 	useEffect(() => {
 		fetchCourseEvents();
 	}, []);
 
 	const fetchCourseEvents = async () => {
 		const response = await fetch(
-			`http://localhost:9000/rip-mock-api/courses/${departmentName}/${courseName}`
+			`https://s1.celber.pl/courses/${departmentName}/${courseName}`
 		);
 		const data = await response.json();
 
 		const calendarData = data.map(element => {
+			let regex = /\((.*?)\)/;
 			return {
-				title: `${element.subjectShort} ${element.room}`,
-				start: `${element.date}T${element.timeStart}`,
-				end: `${element.date}T${element.timeEnd}`,
-				className: `${element.type}`,
+				title: `${element.subject} ${element.room}`,
+				start: `${element.timeStart.date.replace(' ', 'T')}`,
+				end: `${element.timeEnd.date.replace(' ', 'T')}`,
+				className: `${regex.exec(element.subject)[1]}`,
 				allDay: false,
 				extendedProps: {
-					description: `${element.subjectLong} ${element.room} ${element.groupName} ${element.professor}`,
+					description: `${element.subject} ${element.room} ${element.group} ${element.profesor}`,
 				},
 			};
 		});
 		setCourseEvents(calendarData);
-		console.log('data: ', data);
-		console.log('calendarData: ', calendarData);
 	};
 
 	return (

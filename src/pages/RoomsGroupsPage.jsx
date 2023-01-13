@@ -10,7 +10,7 @@ const RoomsGroupsPage = () => {
 	}, []);
 
 	const fetchBuildings = async () => {
-		const response = await fetch('http://localhost:9000/rip-mock-api/rooms/');
+		const response = await fetch('https://s1.celber.pl/rooms');
 		const data = await response.json();
 		setBuildings(data);
 	};

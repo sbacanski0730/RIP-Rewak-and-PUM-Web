@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import List from '../components/List/List';
-import OpenListElement from '../components/OpenListElement/OpenListElement';
+import ListElement from '../components/ListElement/ListElement';
 
 const StyledCoursesPage = styled.div`
 	/* border: 1px dotted white; */
@@ -34,19 +34,27 @@ const StyledCoursesPage = styled.div`
 const CoursesPage = () => {
 	const [coursesList, setCoursesList] = useState([]);
 	const { departmentName } = useParams();
-	console.log('departmentsName: ', departmentName);
+	let regex = /(.*?)\s+\((.*?)\)/;
 
 	useEffect(() => {
 		fetchCourses();
 	}, []);
 
 	const fetchCourses = async () => {
-		const resources = await fetch(
-			`http://localhost:9000/rip-mock-api/courses/${departmentName}`
-		);
+		const resources = await fetch(`https://s1.celber.pl/courses/${departmentName}`);
 		const data = await resources.json();
+
+		data.map(e => {
+			console.log(e);
+			// console.log(e.name);
+		});
+
 		setCoursesList(data);
 	};
+
+	coursesList.map(item => {
+		console.log(item.name);
+	});
 
 	return (
 		<>
@@ -55,11 +63,10 @@ const CoursesPage = () => {
 					{coursesList &&
 						coursesList.map((item, index) => {
 							return (
-								<OpenListElement
-									name={item.name}
-									children={item.children}
+								<ListElement
 									key={index}
-									departmentName={departmentName}
+									text={item.name}
+									link={`/courses/${departmentName}/${item.name}`}
 								/>
 							);
 						})}

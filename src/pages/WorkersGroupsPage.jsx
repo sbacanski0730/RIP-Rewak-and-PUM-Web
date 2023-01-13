@@ -10,7 +10,7 @@ const WorkersGroupsPage = () => {
 	}, []);
 
 	const fetchDepartments = async () => {
-		const response = await fetch('http://localhost:9000/rip-mock-api/workers-group', {
+		const response = await fetch('https://s1.celber.pl/workers-group', {
 			method: 'GET',
 			headers: {
 				'content-type': 'application/json',
