@@ -20,7 +20,7 @@ const HomePage = () => {
 				/>
 				<ListElement
 					text={'Wychowanie Fizyczne'}
-					link={'/courses/Wychowanie Fizyczne'}
+					link={'/courses/Wychowanie fizyczne'}
 				/>
 				<ListElement text={'Erasmus'} link={'/courses/Erasmus'} />
 				<ListElement text={'Szukaj pracownika'} link={'/workers'} />
