@@ -16,6 +16,8 @@ const CoursesCalendarPage = () => {
 		);
 		const data = await response.json();
 
+		console.log(data);
+
 		const calendarData = data.map(element => {
 			let regex = /\((.*?)\)/;
 			return {
