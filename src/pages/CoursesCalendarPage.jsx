@@ -24,7 +24,7 @@ const CoursesCalendarPage = () => {
 				title: `${element.subject} ${element.room}`,
 				start: `${element.timeStart.date.replace(' ', 'T')}`,
 				end: `${element.timeEnd.date.replace(' ', 'T')}`,
-				className: `${regex.exec(element.subject)[1]}`,
+				// className: `${regex.exec(element.subject)[1]}`,
 				allDay: false,
 				extendedProps: {
 					description: `${element.subject} ${element.room} ${element.group} ${element.profesor}`,
