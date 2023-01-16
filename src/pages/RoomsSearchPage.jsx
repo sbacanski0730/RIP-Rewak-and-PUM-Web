@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Input from '../components/Input/Input';
 import SmallList from '../components/SmallList/SmallList';
 import SmallListElement from '../components/SmallListElement/SmallListElement';
+import Spinner from '../components/Spinner/Spinner';
 
 const StyledRoomsSearchPage = styled.div`
 	width: 100%;
@@ -14,6 +15,7 @@ const RoomsSearchPage = () => {
 	const { buildingName } = useParams();
 	const [rooms, setRooms] = useState([]);
 	const [filteredRooms, setFilteredRooms] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		fetchRooms();
@@ -24,6 +26,7 @@ const RoomsSearchPage = () => {
 		const data = await response.json();
 		setRooms(data);
 		setFilteredRooms(data);
+		setIsLoading(false);
 	};
 
 	const filterList = e => {
@@ -39,6 +42,7 @@ const RoomsSearchPage = () => {
 
 	return (
 		<>
+			{isLoading ? <Spinner /> : null}
 			<StyledRoomsSearchPage>
 				<Input placeholder='Szukaj po sali' filterList={filterList} />
 				<SmallList>

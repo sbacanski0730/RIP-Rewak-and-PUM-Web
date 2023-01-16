@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Calendar from '../components/Calendar/Calendar';
+import Spinner from '../components/Spinner/Spinner';
 
 const CoursesCalendarPage = () => {
 	const { departmentName, courseName } = useParams();
 	const [courseEvents, setCourseEvents] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		fetchCourseEvents();
@@ -32,10 +34,12 @@ const CoursesCalendarPage = () => {
 			};
 		});
 		setCourseEvents(calendarData);
+		setIsLoading(false);
 	};
 
 	return (
 		<div>
+			{isLoading ? <Spinner /> : null}
 			<Calendar events={courseEvents} />
 		</div>
 	);

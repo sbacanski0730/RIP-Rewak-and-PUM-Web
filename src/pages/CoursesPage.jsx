@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import List from '../components/List/List';
 import ListElement from '../components/ListElement/ListElement';
+import Spinner from '../components/Spinner/Spinner';
 
 const StyledCoursesPage = styled.div`
 	/* border: 1px dotted white; */
@@ -34,6 +35,7 @@ const StyledCoursesPage = styled.div`
 const CoursesPage = () => {
 	const [coursesList, setCoursesList] = useState([]);
 	const { departmentName } = useParams();
+	const [isLoading, setIsLoading] = useState(true);
 	let regex = /(.*?)\s+\((.*?)\)/;
 
 	useEffect(() => {
@@ -43,13 +45,8 @@ const CoursesPage = () => {
 	const fetchCourses = async () => {
 		const resources = await fetch(`https://s1.celber.pl/courses/${departmentName}`);
 		const data = await resources.json();
-
-		data.map(e => {
-			console.log(e);
-			// console.log(e.name);
-		});
-
 		setCoursesList(data);
+		setIsLoading(false);
 	};
 
 	coursesList.map(item => {
@@ -58,6 +55,7 @@ const CoursesPage = () => {
 
 	return (
 		<>
+			{isLoading ? <Spinner /> : null}
 			<StyledCoursesPage>
 				<List>
 					{coursesList &&

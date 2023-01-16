@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Input from '../components/Input/Input';
 import SmallList from '../components/SmallList/SmallList';
 import SmallListElement from '../components/SmallListElement/SmallListElement';
+import Spinner from '../components/Spinner/Spinner';
 
 import { useParams } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ const WorkerSearchPage = () => {
 	const { departmentName } = useParams();
 	const [workersList, setWorkersList] = useState();
 	const [filteredList, setFilteredList] = useState();
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		fetchWorkers();
@@ -27,6 +29,7 @@ const WorkerSearchPage = () => {
 		const data = await response.json();
 		setWorkersList(data);
 		setFilteredList(data);
+		setIsLoading(false);
 	};
 
 	const filterList = e => {
@@ -44,6 +47,7 @@ const WorkerSearchPage = () => {
 
 	return (
 		<>
+			{isLoading ? <Spinner /> : null}
 			<StyledWorkerSearchPage>
 				<Input placeholder={'Szukaj po nazwisku'} filterList={filterList} />
 				<SmallList>
