@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import spinner from '../../spinner.gif';
+import spinner from '../../spinner.svg';
 
 const StyledSpinner = styled.img`
 	height: 60px;
@@ -9,9 +9,6 @@ const StyledSpinner = styled.img`
 	top: 0;
 	margin: 0;
 	padding: 0;
-
-	/* background-color: #fff; */
-	/* border: 1px solid #fff; */
 `;
 
 const Spinner = () => {
