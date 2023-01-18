@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Calendar from '../components/Calendar/Calendar';
 import Spinner from '../components/Spinner/Spinner';
+import { takeOutSubjectType } from '../utils/takeOutSubjectType';
 
 const CoursesCalendarPage = () => {
 	const { departmentName, courseName } = useParams();
@@ -18,15 +19,12 @@ const CoursesCalendarPage = () => {
 		);
 		const data = await response.json();
 
-		console.log(data);
-
 		const calendarData = data.map(element => {
-			let regex = /\((.*?)\)/;
 			return {
 				title: `${element.subject} ${element.room}`,
 				start: `${element.timeStart.date.replace(' ', 'T')}`,
 				end: `${element.timeEnd.date.replace(' ', 'T')}`,
-				// className: `${regex.exec(element.subject)[1]}`,
+				className: `${takeOutSubjectType(element.subject)}`,
 				allDay: false,
 				extendedProps: {
 					description: `${element.subject} ${element.room} ${element.group} ${element.profesor}`,
