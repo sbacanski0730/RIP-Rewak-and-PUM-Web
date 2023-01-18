@@ -9,12 +9,6 @@ export const StyledCalendar = styled.div`
 	width: 800px;
 	height: 800px;
 	padding: 10px 10px;
-
-	h1 {
-		color: #fff;
-		font-size: 28px;
-	}
-
 	.fc {
 		user-select: none;
 
