@@ -49,6 +49,10 @@ const CoursesPage = () => {
 		setIsLoading(false);
 	};
 
+	coursesList.map(item => {
+		console.log(item.name);
+	});
+
 	return (
 		<>
 			{isLoading ? <Spinner /> : null}

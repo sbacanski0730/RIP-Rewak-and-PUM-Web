@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 let wykColor = 'rgba(127, 0, 255, 1)';
 let labColor = 'rgba(153, 153, 0, 1)';
-let pColor = 'rgba(238, 252, 245, 1)';
-let wtColor = 'rgba(217, 131, 26, 1)';
-let cwColor = 'rgba(150, 199, 219, 1)';
+let cwColor = 'rgba(255, 0, 127, 1)';
 let semColor = 'rgba(255, 153, 51, 1)';
 
 export const StyledCalendar = styled.div`
@@ -86,24 +84,23 @@ export const StyledCalendar = styled.div`
 				}
 
 				&.wyk {
+					/* background-color: rgba(127, 0, 255, 1); */
 					background-color: ${wykColor};
 				}
 				&.lab {
+					/* background-color: rgba(255, 51, 51, 1); */
 					background-color: ${labColor};
 				}
 				&.cw {
+					/* background-color: rgba(255, 100, 51, 1); */
 					background-color: ${cwColor};
 				}
 				&.ćw {
+					/* background-color: rgba(255, 100, 51, 1); */
 					background-color: ${cwColor};
 				}
-				&.p {
-					background-color: ${pColor};
-				}
-				&.wt {
-					background-color: ${wtColor};
-				}
 				&.sem {
+					/* background-color: rgba(255, 153, 51, 1); */
 					background-color: ${semColor};
 				}
 			}
@@ -111,6 +108,7 @@ export const StyledCalendar = styled.div`
 			.tooltip {
 				background-color: #000;
 				border: 1px solid white;
+				/* width: 150px; */
 
 				.tooltip-arrow {
 					display: none;
@@ -131,6 +129,7 @@ export const StyledCalendar = styled.div`
 	.fc-popover {
 		user-select: none;
 		background-color: #000;
+		/* border: 1px solid #fff; */
 		border-radius: 0;
 		box-shadow: 7px 6px 10px -7px rgba(255, 255, 255, 1);
 		.fc-popover-header {
@@ -149,11 +148,13 @@ export const StyledCalendar = styled.div`
 		.fc-popover-body {
 			.fc-daygrid-event {
 				color: #fff;
+				/* border: 1px solid #fff; */
 				border-radius: 0;
 				padding: 4px 10px;
 				font-size: 17px;
 				display: flex;
 				flex-direction: row;
+				/* justify-content: space-between; */
 
 				.fc-daygrid-event-dot {
 					display: none;
@@ -174,12 +175,6 @@ export const StyledCalendar = styled.div`
 				&.sem {
 					background-color: ${semColor};
 				}
-				&.p {
-					background-color: ${pColor};
-				}
-				&.wt {
-					background-color: ${wtColor};
-				}
 			}
 			.fc-timegrid-event {
 				border-radius: none;
@@ -198,12 +193,6 @@ export const StyledCalendar = styled.div`
 				&.sem {
 					background-color: ${semColor};
 				}
-				&.p {
-					background-color: ${pColor};
-				}
-				&.wt {
-					background-color: ${wtColor};
-				}
 				.fc-event-main-frame {
 					font-size: 15px;
 					padding-left: 5px;
@@ -218,13 +207,16 @@ export const StyledCalendar = styled.div`
 		.fc-col-header-cell {
 			color: white;
 			font-weight: 500;
+			/* border-bottom: 1px solid #000; */
 		}
 
 		.fc-col-header .fc-day-today {
+			/* background-color: rgba(255, 255, 255, 1); */
 			border-bottom: 1px solid black;
 			color: black;
 			.fc-scrollgrid-sync-inner {
 				background-color: rgba(255, 255, 255, 1);
+				/* border-bottom: 1px solid #000; */
 			}
 		}
 		.fc-day-today {
@@ -252,15 +244,10 @@ export const StyledCalendar = styled.div`
 				&.sem {
 					background-color: ${semColor};
 				}
-				&.p {
-					background-color: ${pColor};
-				}
-				&.wt {
-					background-color: ${wtColor};
-				}
 
 				.fc-event-main {
 					padding: 2px;
+					/* border: 1px solid green; */
 
 					.fc-event-main-frame {
 						padding: 0 2px;
@@ -282,6 +269,7 @@ export const StyledCalendar = styled.div`
 				}
 			}
 			.tooltip {
+				/* opacity: 1; */
 				.tooltip-arrow {
 					display: none;
 				}
@@ -307,8 +295,12 @@ export const StyledCalendar = styled.div`
 			background-color: rgba(255, 255, 255, 0.05);
 		}
 		.fc-timegrid-col-frame {
+			/* background-color: rgba(249, 248, 113, 0.5); */
+
 			.fc-timegrid-event-harness {
+				/* background-color: rgba(249, 248, 113, 0.5); */
 				border: 1px solid white;
+				/* width: 50%; */
 				.fc-timegrid-event {
 					margin-left: 20px;
 					background-color: rgba(255, 255, 255, 1);
@@ -352,12 +344,6 @@ export const StyledCalendar = styled.div`
 					}
 					&.sem {
 						background-color: ${semColor};
-					}
-					&.p {
-						background-color: ${pColor};
-					}
-					&.wt {
-						background-color: ${wtColor};
 					}
 				}
 			}
