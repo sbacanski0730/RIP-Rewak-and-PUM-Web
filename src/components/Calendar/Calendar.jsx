@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { StyledCalendar } from './Calendar.style';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -19,6 +20,7 @@ import {
 } from '../../utils/tooltipFunctions';
 
 const Calendar = ({ events }) => {
+	const { courseName } = useParams();
 	let tooltipInstance = null;
 
 	const clickTooltip = info => {
@@ -53,6 +55,7 @@ const Calendar = ({ events }) => {
 
 	return (
 		<StyledCalendar>
+			<h1>{courseName}</h1>
 			<FullCalendar
 				plugins={[dayGridPlugin, bootstrap5Plugin, timeGridPlugin]}
 				initialView='dayGridMonth'
